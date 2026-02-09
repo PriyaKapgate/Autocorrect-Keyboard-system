@@ -17,48 +17,67 @@
 
 ![GIF](resource/autocorrection.gif)
 
-- Please consider giving a ⭐ to the repository if you find this useful.
+Here is a **short, clean, and simple README** — ready to copy-paste into GitHub 👇
 
-## Overview:
 
-The AI Autocorrect System is a Python-based application that offers real-time autocorrection suggestions to users while they type. It is designed to help users avoid spelling errors and improve the overall accuracy of their text input. The system uses statistical methods to analyze the user's input and suggest the most likely correct word based on a provided corpus.
+# 🤖 AI Autocorrect System
 
-## Features:
+A Python application that automatically detects and corrects spelling mistakes while typing.
+It compares typed words with a dictionary and suggests the most probable correct word.
 
-- **Autocorrection Suggestions:** As the user types, the application continuously monitors the input and suggests corrections for misspelled words. The autocorrection logic is based on edit distance and probability scores.
 
-- **Edit Distance:** The system calculates the similarity between the typed word and the words in the vocabulary using edit distance. It generates candidate corrections based on single-character edits, such as insertions, deletions, substitutions, and transpositions.
+## 📌 Features
 
-- **Probability-based Scoring:** Each candidate correction is assigned a probability score based on the frequency of words in the provided text file. The system considers words with higher probabilities as better suggestions.
+* Real-time spelling correction
+* Suggests similar words using **edit distance**
+* Chooses best word using **word frequency (probability)**
+* Simple GUI built with **Tkinter**
+* Auto-replace wrong word when space is pressed
+* Shows suggestion list after typing stops
 
-- **Graphical User Interface:** The application provides a user-friendly GUI developed using the Tkinter library. Users can type in the input box and receive autocorrection suggestions in real-time.
 
-- **Selecting Suggestions:** The system displays suggestions in a list box format after waiting for 5 seconds of inactivity, allowing users to select the appropriate correction for the misspelled word. The suggestions are also ordered based on the similarity of the longer prefix, which means that similar words with longer common prefixes are suggested first in the list.
+## 🧠 How It Works
 
-- **Automatic Word Replacement:**  If the user doesn't select from the list of autocorrection options and still the word is incorrect upon hitting the space bar, the application automatically replaces the misspelled word with the correction having the highest probability in the provided text corpus. This ensures a seamless and efficient autocorrection process without the need for explicit user selection.
+The system compares the typed word with dictionary words by checking:
 
-## About the Corpus:
-The success of the AI Autocorrect System highly depends on the quality and diversity of the corpus. Your corpus should include a large number of unique words to ensure that the system can effectively correct different misspelled words.
+* Missing letters → `speling → spelling`
+* Extra letters → `spelliing → spelling`
+* Wrong letters → `recieve → receive`
+* Swapped letters → `spelilng → spelling`
 
-To create my `corpus.txt`, I explored multiple text-based datasets covering a wide range of subjects, including literature, healthcare, dictionaries, and various other domains. Each dataset contributed a unique set of words, enriching the vocabulary of the corpus. If the corpus does not have cleaned text, it is important to process it, ensuring that it only contains valid English words while removing any irrelevant characters, numbers, special symbols, and non-English words.
+Then it selects the most common matching word from the dataset.
 
-In short, you can make your corpus as big as possible, but it is crucial to ensure that it contains valid words.
 
-## How to Use:
+## 📂 Corpus (Dictionary)
 
-1. Run the application by executing the `main_script.py` file.
-2. The GUI window will open, displaying an input box.
-3. Start typing in the input box, and the application will provide real-time autocorrection suggestions.
-4. If you encounter a misspelled word, the system will suggest corrections in the list box below the input box.
-5. To accept a suggestion, either click on the suggested word in the list box or press the space bar.
-6. The application will automatically replace the misspelled word with the selected suggestion.
+The accuracy depends on the dataset (corpus).
+It contains cleaned English words collected from books, articles, and dictionaries.
 
-Additionally some others libraries you will need to install besides python to run this application:
+Bigger and cleaner corpus = better correction.
+
+
+
+## ▶️ How to Run
 
 ```bash
 pip install numpy editdistance
+python main_script.py
 ```
 
-## Limitations:
+Then:
 
-The current implementation of the system does not involve comprehensive linguistic analysis to understand the context or grammar of the input. Instead, it relies on statistical methods to generate suggestions based on edit distance and word probabilities.
+1. A window opens
+2. Start typing
+3. Suggestions appear automatically
+4. Click suggestion or press space to accept correction
+
+
+## ⚠️ Limitations
+
+* Works only for English words
+* Does not understand sentence meaning
+* May change correct words sometimes
+* Slang or new words may not be detected
+
+
+
